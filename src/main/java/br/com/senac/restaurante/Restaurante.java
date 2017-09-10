@@ -1,8 +1,11 @@
 package br.com.senac.restaurante;
 
+import java.util.ArrayList;
+
 public class Restaurante {
 	
 	private Prato[] pratos = new Prato[3];
+	private ArrayList<Pedido> pedidos = new ArrayList<Pedido>();
 	
 	public String mostrarCardapio(){
 		String cardapio = "";
@@ -19,9 +22,12 @@ public class Restaurante {
 	public Prato[] getPratos() {
 		return pratos;
 	}
-
-	public void setPratos(Prato[] pratos) {
-		this.pratos = pratos;
+	
+	public ArrayList<Pedido> getPedidos() {
+		return pedidos;
 	}
 
+	public void criaPedido(Pedido pedido) {
+		pedidos.add(pedido);
+	}
 }
