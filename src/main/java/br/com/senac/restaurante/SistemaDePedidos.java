@@ -3,18 +3,25 @@ package br.com.senac.restaurante;
 public class SistemaDePedidos {
 
 	public static void main(String[] args) {
-		System.out.println("Criando pratos...");
+		System.out.println("Criando pratos e ingredientes...");
 		
-		Prato lasanha = new Prato("Lasanha de frango", 10.00);
-		lasanha.setDescricao("Massa, queijo, presunto, molho e frango");
+		Ingrediente ingredientePicanha = new Ingrediente(TipoIngrediente.CARNE, "Picanha", true);
+		Ingrediente ingredienteBatata = new Ingrediente(TipoIngrediente.ACOMPANHAMENTO, "Batata", true);
+		Prato picanha = new Prato("Picanha com fritas", 10.00);
+		picanha.setDescricao("Deliciosa picanha com fritas");
+		picanha.setIngredientes(new Ingrediente[]{ingredientePicanha, ingredienteBatata});
 		
-		Prato pizza = new Prato("Pizza", 20.00);
-		pizza.setDescricao("Pizza com massa fininha e super rechada");
+		Ingrediente ingredienteBrocolis = new Ingrediente(TipoIngrediente.LEGUME, "Brócolis", true);
+		Prato picanhaComBrocolis = new Prato("Picanha com Brócolis", 20.00);
+		picanhaComBrocolis.setDescricao("Deliciosa picanha com brócolis");
+		picanhaComBrocolis.setIngredientes(new Ingrediente[]{ingredientePicanha, ingredienteBrocolis});
 		
-		Prato torrada = new Prato("Torrada", 5.00);
-		torrada.setDescricao("Pão, queijo, presunto e maionese");
+		Ingrediente ingredienteBatataOpcional = new Ingrediente(TipoIngrediente.ACOMPANHAMENTO, "Batata", false);
+		Prato picanhaComBrocolisBatata = new Prato("Picanha com Brócolis (opcional batata)", 25.00);
+		picanhaComBrocolisBatata.setDescricao("Deliciosa picanha com brócolis e opcional de batata");
+		picanhaComBrocolisBatata.setIngredientes(new Ingrediente[]{ingredientePicanha, ingredienteBrocolis, ingredienteBatataOpcional});
 		
-		Prato[] pratos = new Prato[]{lasanha, pizza, torrada};
+		Prato[] pratos = new Prato[]{picanha, picanhaComBrocolis, picanhaComBrocolisBatata};
 		
 		Restaurante restaurante = new Restaurante();
 		
@@ -28,7 +35,7 @@ public class SistemaDePedidos {
 		
 		Pedido pedido = new Pedido();
 		pedido.setPratos(pratos);
-		pedido.setValorPago(40.0);
+		pedido.setValorPago(100.0);
 		
 		restaurante.criaPedido(pedido);
 		
