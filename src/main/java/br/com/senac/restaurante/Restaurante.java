@@ -11,7 +11,7 @@ public class Restaurante {
 		String cardapio = "";
 		for (Prato prato : pratos) {
 			cardapio = cardapio +
-					"Nome do Prato: " + prato.getNome() + 
+					prato.getNome() + ": R$ " + prato.getPreco() + 
 					"\nDescrição do Prato: " + prato.getDescricao() + 
 					"\n";
 		}
@@ -30,4 +30,19 @@ public class Restaurante {
 	public void criaPedido(Pedido pedido) {
 		pedidos.add(pedido);
 	}
+	
+	public double getTotalCaixa(){
+		double total = 0;
+		
+		for (Pedido pedido : pedidos) {
+			total = total + pedido.getTotal();
+		}
+		
+		return total;
+	}
+
+	public void setPratos(Prato[] pratos) {
+		this.pratos = pratos;
+	}
+	
 }
